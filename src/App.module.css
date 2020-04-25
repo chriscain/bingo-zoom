@@ -1,0 +1,28 @@
+:global(body) {
+  height: 100%;
+  width: 100%;
+}
+
+:global(#root) {
+  height: 100%;
+  width: 100%;
+}
+
+.bingo {
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.controls {
+  height: 20px;
+}
+
+.contents {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: calc(100% - 20px);
+}
+
