@@ -3,6 +3,8 @@
 	width: 500px;
 	display: flex;
 	box-sizing: border-box;
+	align-items: center;
+	justify-content: center;
 }
 
 .column {
@@ -35,6 +37,13 @@
 	cursor: pointer;
 }
 
+@media screen and (max-width: 500px) {
+	.cell {
+		width: 60px;
+		height: 60px;
+	}
+}
+
 .cell:hover {
 	background-color: #f1f1f1;
 }
@@ -56,5 +65,3 @@
 .cellSelected:hover {
 	background-color: #4267b2;
 }
-
-
