@@ -11,18 +11,36 @@ export class GameBoard extends React.Component {
 			gColumn: getNumbersInRange(46, 60),
 			oColumn: getNumbersInRange(61, 75),
 		};
-
-		console.log(this.state);
 	}
 
 	render() {
 		return (
 			<div className={styles.board}>
-				<Column topLetter="B" numbers={this.state.bColumn} />
-				<Column topLetter="I" numbers={this.state.iColumn} />
-				<Column topLetter="N" numbers={this.state.nColumn} />
-				<Column topLetter="G" numbers={this.state.gColumn} />
-				<Column topLetter="O" numbers={this.state.oColumn} />
+				<Column
+					cardVersion={this.props.cardVersion}
+					topLetter="B"
+					numbers={this.state.bColumn}
+				/>
+				<Column
+					cardVersion={this.props.cardVersion}
+					topLetter="I"
+					numbers={this.state.iColumn}
+				/>
+				<Column
+					cardVersion={this.props.cardVersion}
+					topLetter="N"
+					numbers={this.state.nColumn}
+				/>
+				<Column
+					cardVersion={this.props.cardVersion}
+					topLetter="G"
+					numbers={this.state.gColumn}
+				/>
+				<Column
+					cardVersion={this.props.cardVersion}
+					topLetter="O"
+					numbers={this.state.oColumn}
+				/>
 			</div>
 		);
 	}
@@ -36,6 +54,16 @@ class Column extends React.Component {
 			selectedNumbers: [],
 		};
 	}
+
+	componentWillReceiveProps(prevProps) {
+		if (prevProps.cardVersion !== this.props.cardVersion) {
+			this.setState({
+				columnNumbers: getFiveRandomNumbersOrdered(this.props.numbers),
+				selectedNumbers: [],
+			});
+		}
+	}
+
 	render() {
 		return (
 			<div className={styles.column}>
