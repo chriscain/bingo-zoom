@@ -92,7 +92,17 @@ class Column extends React.Component {
 		return (
 			<div className={styles.column}>
 				<div className={styles.header}>{this.props.topLetter}</div>
-				{this.state.columnNumbers.map((number) => {
+				{this.state.columnNumbers.map((number, index) => {
+					if (index === 2 && this.props.topLetter === "N") {
+						return (
+							<div
+								className={styles.cellSelectedAlways}
+								key="FREE"
+							>
+								FREE
+							</div>
+						);
+					}
 					return (
 						<div
 							onClick={() => this.handleToggleNumber(number)}

@@ -39,13 +39,22 @@
 	background-color: #f1f1f1;
 }
 
-.cellSelected {
+.cellSelected,
+.cellSelectedAlways {
 	composes: cell;
 	background-color: #0558d3;
 	color: white;
 }
 
+.cellSelectedAlways {
+	cursor: default;
+}
+.cellSelectedAlways:hover {
+	background-color: #0558d3;
+}
+
 .cellSelected:hover {
 	background-color: #4267b2;
 }
+
 
