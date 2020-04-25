@@ -32,16 +32,25 @@ class Column extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			selectedNumbers: getFiveRandomNumbersOrdered(props.numbers),
+			columnNumbers: getFiveRandomNumbersOrdered(props.numbers),
+			selectedNumbers: [],
 		};
 	}
 	render() {
 		return (
 			<div className={styles.column}>
 				<div className={styles.header}>{this.props.topLetter}</div>
-				{this.state.selectedNumbers.map((number) => {
+				{this.state.columnNumbers.map((number) => {
 					return (
-						<div className={styles.cell} key={number}>
+						<div
+							onClick={() => this.handleToggleNumber(number)}
+							className={
+								this.state.selectedNumbers.includes(number)
+									? styles.cellSelected
+									: styles.cell
+							}
+							key={number}
+						>
 							{number}
 						</div>
 					);
@@ -49,6 +58,22 @@ class Column extends React.Component {
 			</div>
 		);
 	}
+
+	handleToggleNumber = (number) => {
+		if (this.state.selectedNumbers.includes(number)) {
+			this.setState((prevState) => ({
+				selectedNumbers: prevState.selectedNumbers.filter(
+					(existingNumber) => {
+						return existingNumber !== number;
+					}
+				),
+			}));
+		} else {
+			this.setState({
+				selectedNumbers: this.state.selectedNumbers.concat([number]),
+			});
+		}
+	};
 }
 
 function getFiveRandomNumbersOrdered(range) {

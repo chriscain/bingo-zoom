@@ -32,5 +32,12 @@
 	font-size: 21px;
 	font-weight: bold;
 	color: #4267b2;
+	cursor: pointer;
+}
+
+.cellSelected {
+	composes: cell;
+	background-color: #0558d3;
+	color: white;
 }
 
