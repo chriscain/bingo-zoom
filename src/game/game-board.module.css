@@ -35,9 +35,17 @@
 	cursor: pointer;
 }
 
+.cell:hover {
+	background-color: #f1f1f1;
+}
+
 .cellSelected {
 	composes: cell;
 	background-color: #0558d3;
 	color: white;
+}
+
+.cellSelected:hover {
+	background-color: #4267b2;
 }
 

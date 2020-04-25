@@ -16,13 +16,31 @@
 }
 
 .controls {
-  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 32px 0;
+}
+
+.controls button {
+  outline: 0;
+  padding: 16px;
+  width: auto;
+  text-align: center;
+  font-size: 17px;
+  cursor: pointer;
+  border-radius: 3px;
+  border: 0;
+  color: white;
+  background-color: #ff454f;
+}
+
+.controls button:hover {
+  background-color: #e6637d;
 }
 
 .contents {
   display: flex;
   align-items: center;
   justify-content: center;
-  height: calc(100% - 20px);
 }
-
