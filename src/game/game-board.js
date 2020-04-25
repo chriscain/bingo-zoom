@@ -46,21 +46,45 @@ export class GameBoard extends React.Component {
 	}
 }
 
+function getLocalStorageKey(columnLetter) {
+	return "CAIN_BINGO_COLUMN_" + columnLetter;
+}
+
 class Column extends React.Component {
 	constructor(props) {
 		super(props);
+
+		const key = getLocalStorageKey(props.topLetter);
+		const existingNumbers = JSON.parse(localStorage.getItem(key));
+
+		const randomNumbers = existingNumbers
+			? existingNumbers
+			: getFiveRandomNumbersOrdered(props.numbers);
+
 		this.state = {
-			columnNumbers: getFiveRandomNumbersOrdered(props.numbers),
+			columnNumbers: randomNumbers,
 			selectedNumbers: [],
 		};
+
+		localStorage.setItem(key, JSON.stringify(randomNumbers));
 	}
 
 	componentWillReceiveProps(prevProps) {
-		if (prevProps.cardVersion !== this.props.cardVersion) {
+		if (
+			prevProps.cardVersion !== this.props.cardVersion &&
+			this.props.cardVersion !== 0
+		) {
+			const newRandomNumbers = getFiveRandomNumbersOrdered(
+				this.props.numbers
+			);
+
 			this.setState({
-				columnNumbers: getFiveRandomNumbersOrdered(this.props.numbers),
+				columnNumbers: newRandomNumbers,
 				selectedNumbers: [],
 			});
+
+			const key = getLocalStorageKey(this.props.topLetter);
+			localStorage.setItem(key, JSON.stringify(newRandomNumbers));
 		}
 	}
 
