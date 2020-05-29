@@ -1,7 +1,19 @@
+/* @flow */
+
 import * as React from 'react';
 import styles from './game-board.module.css';
 
-export class GameBoard extends React.Component {
+type ColumnValue = number[];
+
+type State = {
+    bColumn: ColumnValue,
+    iColumn: ColumnValue,
+    nColumn: ColumnValue,
+    gColumn: ColumnValue,
+    oColumn: ColumnValue,
+};
+
+export class GameBoard extends React.Component<{cardVersion: number}, State> {
     constructor() {
         super();
         this.state = {
@@ -46,16 +58,37 @@ export class GameBoard extends React.Component {
     }
 }
 
-function getLocalStorageKey(columnLetter) {
+function getLocalStorageItem(key: string) {
+    const item = localStorage.getItem(key);
+
+    if (item) {
+        return JSON.parse(item);
+    }
+
+    return null;
+}
+
+function getLocalStorageKey(columnLetter: string) {
     return 'CAIN_BINGO_COLUMN_' + columnLetter;
 }
 
-class Column extends React.Component {
+type ColumnProps = {
+    numbers: number[],
+    topLetter: string,
+    cardVersion: number,
+};
+
+type ColumnState = {
+    columnNumbers: number[],
+    selectedNumbers: number[],
+};
+
+class Column extends React.Component<ColumnProps, ColumnState> {
     constructor(props) {
         super(props);
 
         const key = getLocalStorageKey(props.topLetter);
-        const existingNumbers = JSON.parse(localStorage.getItem(key));
+        const existingNumbers = getLocalStorageItem(key);
 
         const randomNumbers = existingNumbers
             ? existingNumbers
@@ -138,7 +171,7 @@ class Column extends React.Component {
     };
 }
 
-function getFiveRandomNumbersOrdered(range) {
+function getFiveRandomNumbersOrdered(range: number[]) {
     const numbers = [];
     while (numbers.length < 5) {
         const newNumber = getRandomNumber(range[0], range[14]);

@@ -1,8 +1,14 @@
+/* @flow */
+
 import * as React from 'react';
 import {GameBoard} from './game/game-board';
 import styles from './App.module.css';
 
-class App extends React.Component {
+type State = {
+    cardVersion: number,
+};
+
+class App extends React.Component<{}, State> {
     constructor() {
         super();
         this.state = {

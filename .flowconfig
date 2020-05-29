@@ -1,0 +1,12 @@
+[ignore]
+
+[include]
+
+[libs]
+infrastructure/global-types.js
+
+[lints]
+
+[options]
+
+[strict]
