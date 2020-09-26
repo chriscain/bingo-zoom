@@ -14,6 +14,7 @@
       "auto_format_on_save_excludes": [],
       "allow_inline_formatting": false,
       "custom_file_extensions": [],
+      "prettier_cli_path": "./node_modules/.bin/prettier",
       "additional_cli_args": {
           "--config": ".prettierrc",
           "--config-precedence": "prefer-file"
