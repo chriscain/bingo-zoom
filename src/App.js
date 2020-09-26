@@ -1,41 +1,26 @@
 /* @flow */
 
 import * as React from 'react';
-import {GameBoard} from './game/game-board';
-import styles from './App.module.css';
+import {BrowserRouter as Router, Switch, Route} from 'react-router-dom';
 
-type State = {
-    cardVersion: number,
-};
+import {BingoRegular} from './variants/bingo-regular';
+import {MathVariant} from './variants/math-variant';
 
-class App extends React.Component<{}, State> {
-    constructor() {
-        super();
-        this.state = {
-            cardVersion: 0,
-        };
-    }
-
+class App extends React.Component<{}> {
     render() {
         return (
-            <div className={styles.bingo}>
-                <div className={styles.controls}>
-                    <button onClick={this.handleNewCard}>
-                        Generate new card
-                    </button>
-                </div>
-                <div className={styles.contents}>
-                    <GameBoard cardVersion={this.state.cardVersion} />
-                </div>
-            </div>
+            <Router>
+                <Switch>
+                    <Route exact path="/">
+                        <BingoRegular />
+                    </Route>
+                    <Route path="/wihi">
+                        <MathVariant />
+                    </Route>
+                </Switch>
+            </Router>
         );
     }
-
-    handleNewCard = () => {
-        this.setState({
-            cardVersion: this.state.cardVersion + 1,
-        });
-    };
 }
 
 export default App;

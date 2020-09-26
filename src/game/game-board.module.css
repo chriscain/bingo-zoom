@@ -35,6 +35,55 @@
 	font-weight: bold;
 	color: #4267b2;
 	cursor: pointer;
+	position: relative;
+}
+
+.cell.math::before {
+	position: absolute;
+	opacity: 0.4;
+	top: 0;
+	left: 0;
+	content: ' ';
+	height: 100%;
+	width: 100%;
+	background-image: url('./assets/math.png');
+	background-size: 100%;
+}
+
+.cell.dingo::before{
+	position: absolute;
+	opacity: 0.4;
+	top: 0;
+	left: 0;
+	content: ' ';
+	height: 100%;
+	width: 100%;
+	background-image: url('./assets/dingo.jpeg');
+	background-size: 100%;
+}
+
+.cell.wihi::before {
+	position: absolute;
+	opacity: 0.4;
+	top: 0;
+	left: 0;
+	content: ' ';
+	height: 100%;
+	width: 100%;
+	background-image: url('./assets/wihi.png');
+	background-size: 100%;
+}
+
+.cell.snowman::before {
+	position: absolute;
+	opacity: 0.4;
+	top: 0;
+	left: 0;
+	content: ' ';
+	height: 100%;
+	width: 100%;
+	background-image: url('./assets/snowman.jpg');
+	background-size: 100%;
 }
 
 @media screen and (max-width: 500px) {

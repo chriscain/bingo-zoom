@@ -18,6 +18,10 @@
 .env.test.local
 .env.production.local
 
+# sublime
+bingo-app.sublime-workspace
+bingo.sublime-workspace
+
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
