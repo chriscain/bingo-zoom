@@ -12,10 +12,10 @@ class App extends React.Component<{}> {
             <Router>
                 <Switch>
                     <Route exact path="/">
-                        <BingoRegular />
+                        <MathVariant />
                     </Route>
                     <Route path="/wihi">
-                        <MathVariant />
+                        <BingoRegular />
                     </Route>
                 </Switch>
             </Router>
